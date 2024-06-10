@@ -13,7 +13,7 @@ func contador(qtd int) {
 }
 
 func main() {
-	go contador(10)
-	go contador(10)
+	go contador(10) // thread 2
+	go contador(10) // thread 3
 	contador(10)
 }
