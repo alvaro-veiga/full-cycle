@@ -1,12 +1,19 @@
 package main
 
-import "net/http"
+import (
+	"fmt"
+	"time"
+)
 
-func main() {
-	http.HandleFunc("/", HelloWorld)
-	http.ListenAndServe(":8888", nil)
+func contador(qtd int) {
+	for i := range qtd {
+		fmt.println(i)
+		time.Sleep(time.Second)
+	}
 }
 
-func HelloWorld(w http.ResponseWritter, r *http.Request) {
-	w.Write([]byte("Hello World!"))
+func main() {
+	go contador(10)
+	go contador(10)
+	contador(10)
 }
